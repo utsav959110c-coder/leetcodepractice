@@ -1,29 +1,24 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        HashMap<Character, Integer> h1=new HashMap<>();
-        HashMap<Character, Integer> h2=new HashMap<>();
+        int [] freqOfS= new int[26];
+        int [] freqOfT=new int[26];
 
-        for(char ch:s.toCharArray()){
-            if(!h1.containsKey(ch)){
-                h1.put(ch, 1);
-            }
-            else{
-                h1.put(ch, h1.get(ch)+1);
-            }
-        
-         }
+        for(int i=0; i<s.length(); i++){
+         int idx= s.charAt(i)-'a';
+             freqOfS[idx]++;
+        }
 
-          for(char ch:t.toCharArray()){
-            if(!h2.containsKey(ch)){
-                h2.put(ch, 1);
-            }
-            else{
-                h2.put(ch, h2.get(ch)+1);
-            }
-        
-         }
+        for(int i=0; i<t.length(); i++){
+            int idx= t.charAt(i)-'a';
+            freqOfT[idx]++;
+        }
 
-        return h1.equals(h2);
-        
+        for(int i=0; i<26; i++ ){
+            if(freqOfS[i]!=freqOfT[i]){
+                return false;
+            } 
+        }
+        return true;
+
     }
 }
