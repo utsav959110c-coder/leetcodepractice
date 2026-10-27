@@ -7,6 +7,7 @@ class Solution {
                 if(i!=j && words[i].contains(words[j])){
                     if(!substring.contains(words[j])){ 
                         substring.add(words[j]);
+                        continue;
                     }
                 }
             }
